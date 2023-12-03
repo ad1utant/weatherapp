@@ -1,14 +1,12 @@
-import React from 'react'
+import React,{useState} from 'react'
 import './App.css'
-
+import Input from "./Input.jsx";
 function App() {
-
-
-  return (
-    <div className="App">
-        weather app
-    </div>
-  )
+    return (
+        <div className="App">
+            <Input/>
+        </div>
+    )
 }
 
 export default App
