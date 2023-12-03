@@ -1,10 +1,11 @@
 import React,{useState} from 'react'
 import './App.css'
-import Input from "./Input.jsx";
+import Form from "./Form.jsx";
 function App() {
     return (
         <div className="App">
-            <Input/>
+            <Form/>
+
         </div>
     )
 }
