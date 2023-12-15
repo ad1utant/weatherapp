@@ -29,6 +29,7 @@ function App(props) {
                 .then(response => response.json())
                 .then((data) => {
                     setData(data)
+                    console.log(getWeatherLink)
                     console.log(data)
                 })
                 .catch((error) => {
@@ -36,11 +37,16 @@ function App(props) {
                 })
                 },[])
 
+                const { main, weather, wind, sys, name, coord } = data || {};
+                const {deg, speed} = wind || {};
+                const { feels_like, humidity, pressure, temp, temp_max, temp_min } = main || {};
+
 
     return (
         <div className="App">
             <Form inputValue = {inputValue} setInputValue = {setInputValue} handleButtonClicked = {handleButtonClicked} />
-
+            <p>{speed}</p>
+            {deg}
         </div>
     )}
 
