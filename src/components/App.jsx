@@ -13,16 +13,36 @@ function App(props) {
     const handleButtonClicked = (inputValue) => {
         setCityName(inputValue)
     }
-
+    const getCurrentLocation = () => {
+            if ('geolocation' in navigator){
+                navigator.geolocation.getCurrentPosition((position) => {
+                    const {longitude, latitude} = position.coords;
+                    console.log(longitude,latitude)
+                    return {
+                        lon: longitude,
+                        lat: latitude
+                    }
+                })
+            }
+    }
+    let getWeatherLink
     useEffect(() => {
-        let getWeatherLink, weather
+        let weather;
+        // const { lon, lat } =  getCurrentLocation;
+        // console.warn(lon,lat)
+
+        // console.log('Longitude:', lon, 'Latitude:', lat);
+        // getWeatherLink = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${KEY}`
+
         fetch(getCityCoordsLink)
             .then(response => response.json())
             .then((cityData) => {
                 setCityData(cityData)
                 const {lat, lon} = cityData[0]
-                getWeatherLink = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${KEY}`
-                console.info(`getweatherlink: ${getWeatherLink}`)
+                if(cityName !== '') {
+                    getWeatherLink = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${KEY}`
+                    console.info(`getweatherlink: ${getWeatherLink}`)
+                }
                 //get a weather
                 return fetch(getWeatherLink)
             })
@@ -34,8 +54,7 @@ function App(props) {
             })
             .catch((error) => {
                 console.error(error)
-            })
-    },[cityName])
+            })},[])
 
     const { main, weather, wind, sys, name, coord } = data || {};
     const {deg, speed} = wind || {};
@@ -57,7 +76,7 @@ function App(props) {
             <p>deg: {deg}</p>
 
         </div>
-    )}
-
+    )
+}
 
 export default App
