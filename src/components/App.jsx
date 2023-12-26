@@ -4,57 +4,40 @@ import Form from "./Form.jsx";
 
 function App(props) {
     const KEY = '4d6b0e426f410fb2f9af8ffa8ae8112c'
-    const [cityData,setCityData] = useState(null)
-    const [data,setData] = useState(null)
+    let getWeatherLink;
+    const [data,setData] = useState({})
     const [inputValue,setInputValue] = useState('')
-    const [cityName,setCityName] = useState('')
+    const [cityName,setCityName] = useState('kraków')
     const getCityCoordsLink = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=${'1'}&appid=${KEY}`
-    console.log(getCityCoordsLink)
-    const handleButtonClicked = (inputValue) => {
-        setCityName(inputValue)
-    }
-    const getCurrentLocation = () => {
-            if ('geolocation' in navigator){
-                navigator.geolocation.getCurrentPosition((position) => {
-                    const {longitude, latitude} = position.coords;
-                    console.log(longitude,latitude)
-                    return {
-                        lon: longitude,
-                        lat: latitude
-                    }
-                })
-            }
-    }
-    let getWeatherLink
-    useEffect(() => {
-        let weather;
-        // const { lon, lat } =  getCurrentLocation;
-        // console.warn(lon,lat)
 
-        // console.log('Longitude:', lon, 'Latitude:', lat);
-        // getWeatherLink = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${KEY}`
 
+
+    function fetches(){
         fetch(getCityCoordsLink)
             .then(response => response.json())
             .then((cityData) => {
-                setCityData(cityData)
                 const {lat, lon} = cityData[0]
-                if(cityName !== '') {
-                    getWeatherLink = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${KEY}`
-                    console.info(`getweatherlink: ${getWeatherLink}`)
-                }
-                //get a weather
-                return fetch(getWeatherLink)
+                getWeatherLink = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${KEY}`
+                return getWeatherLink
             })
-            .then(response => response.json())
+            .then((link) => {
+                return fetch(link)
+            })
+            .then((response) => response.json())
             .then((data) => {
                 setData(data)
-                console.log(getWeatherLink)
                 console.log(data)
             })
             .catch((error) => {
-                console.error(error)
-            })},[])
+            console.error(error)
+        })
+    }
+    const handleButtonClicked = (inputValue) => {
+        setCityName(inputValue)
+    }
+    useEffect(() => {
+        fetches()
+    },[cityName])
 
     const { main, weather, wind, sys, name, coord } = data || {};
     const {deg, speed} = wind || {};
