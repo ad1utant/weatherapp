@@ -7,7 +7,7 @@ function App(props) {
     let getWeatherLink;
     const [data,setData] = useState({})
     const [inputValue,setInputValue] = useState('')
-    const [cityName,setCityName] = useState('kraków')
+    const [cityName,setCityName] = useState('')
     const getCityCoordsLink = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=${'1'}&appid=${KEY}`
 
 
@@ -36,7 +36,9 @@ function App(props) {
         setCityName(inputValue)
     }
     useEffect(() => {
-        fetches()
+        if(cityName !== '') {
+            fetches()
+        }
     },[cityName])
 
     const { main, weather, wind, sys, name, coord } = data || {};
