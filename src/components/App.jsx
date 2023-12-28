@@ -10,6 +10,13 @@ function App(props) {
     const [cityName,setCityName] = useState('')
     const getCityCoordsLink = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=${'1'}&appid=${KEY}`
 
+    function getCurrentLocation():
+        if (navigator.geolocation){
+            navigator.geolocation.getCurrentPosition((position) => {
+                //lat = position.coords.latitude
+                //lon = position.coords.longitude
+            })
+        }
 
 
     function fetches(){
