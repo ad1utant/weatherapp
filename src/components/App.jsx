@@ -4,19 +4,31 @@ import Form from "./Form.jsx";
 
 function App(props) {
     const KEY = '4d6b0e426f410fb2f9af8ffa8ae8112c'
-    let getWeatherLink;
+    let getWeatherLink, lat, lon;
     const [data,setData] = useState({})
     const [inputValue,setInputValue] = useState('')
     const [cityName,setCityName] = useState('')
     const getCityCoordsLink = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=${'1'}&appid=${KEY}`
 
-    function getCurrentLocation():
-        if (navigator.geolocation){
+    function getCurrentLocation() {
+        if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position) => {
-                //lat = position.coords.latitude
-                //lon = position.coords.longitude
+                lat = position.coords.latitude
+                lon = position.coords.longitude
+
+                fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${KEY}`)
+                    .then((response) => response.json())
+                    .then((data) => {
+                        setData(data)
+                        console.log(data)
+                    })
+                    .catch((error) => {
+                        console.error(error)
+
+                    })
             })
         }
+    }
 
 
     function fetches(){
@@ -45,6 +57,8 @@ function App(props) {
     useEffect(() => {
         if(cityName !== '') {
             fetches()
+        }else{
+            getCurrentLocation()
         }
     },[cityName])
 
