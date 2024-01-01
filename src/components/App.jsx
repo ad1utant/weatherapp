@@ -76,7 +76,7 @@ function App(props) {
             <Form inputValue = {inputValue} setInputValue = {setInputValue} handleButtonClicked = {handleButtonClicked} />
 
             <div className={'temperatureBox'}>
-                <h1>Temperature</h1>
+                <h2>Temperature</h2>
                 <p>max temperature: {temp_max}</p>
                 <p>temperature: {temp}</p>
                 <p>min temperature: {temp_min} </p>
@@ -85,20 +85,20 @@ function App(props) {
 
 
             <div className={'windBox'}>
-                <h1>Wind</h1>
+                <h2>Wind</h2>
                 <p>speed: {speed}</p>
                 <p>deg: {deg}</p>
             </div>
 
             <div className={'otherBox'}>
-                <h1>Other</h1>
+                <h2>Other</h2>
                 <p>humidity: {humidity}</p>
                 <p>pressure: {pressure}</p>
 
             </div>
 
             <div>
-                <h1>Clouds</h1>
+                <h2>Clouds</h2>
                 <p>visibility: {visibility}</p>
                 <p>clouds: {cloudsMain}</p>
                 <p>description: {description}</p>
