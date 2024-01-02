@@ -7,7 +7,7 @@ function App(props) {
     let getWeatherLink, lat, lon;
     const [data,setData] = useState({})
     const [inputValue,setInputValue] = useState('')
-    const [cityName,setCityName] = useState('')
+    const [cityName,setCityName] = useState('twoja lokalizacja')
     const getCityCoordsLink = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=${'1'}&appid=${KEY}`
 
     function getCurrentLocation() {
@@ -55,7 +55,7 @@ function App(props) {
         setCityName(inputValue)
     }
     useEffect(() => {
-        if(cityName !== '') {
+        if(cityName !== 'twoja lokalizacja') {
             fetches()
         }else{
             getCurrentLocation()
@@ -74,7 +74,7 @@ function App(props) {
     return (
         <div className="App">
             <Form inputValue = {inputValue} setInputValue = {setInputValue} handleButtonClicked = {handleButtonClicked} />
-
+            <h1>pogoda dla: {cityName}</h1>
             <div className={'temperatureBox'}>
                 <h2>Temperature</h2>
                 <p>max temperature: {temp_max}</p>
