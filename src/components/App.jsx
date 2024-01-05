@@ -80,7 +80,7 @@ function App(props) {
     return (
         <div className="App">
             <Form inputValue = {inputValue} setInputValue = {setInputValue} handleButtonClicked = {handleButtonClicked} />
-            <h1>Current weather in: {cityName}</h1>
+            {cityName === 'city does not exist' ? <h1>city does not exist</h1> : <h1>Current weather in: {cityName}</h1>}
         <div id = 'container'>
             <div className={'temperatureBox'}>
                 <h2>Temperature</h2>
