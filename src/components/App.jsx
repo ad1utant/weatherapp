@@ -67,9 +67,13 @@ function App(props) {
     const {deg, speed} = wind || {};
     const {sunrise, sunset} = sys || {};
     const sunriseDate = new Date(1000 * sunrise)
+    const sunsetDate = new Date(1000 * sunset)
     const sunriseHours = sunriseDate.getHours()
     const sunriseMinutes = sunriseDate.getMinutes()
-    const sunsetDate = new Date(1000 * sunset)
+    const sunriseSeconds = sunriseDate.getSeconds()
+    const sunsetHours = sunsetDate.getHours()
+    const sunsetMinutes = sunsetDate.getMinutes()
+    const sunsetSeconds = sunsetDate.getSeconds()
     const {description, main: cloudsMain} = (weather && weather.length > 0) ? weather[0] : {};
     let { feels_like, humidity, pressure, temp, temp_max, temp_min } = main || {};
 
@@ -109,8 +113,8 @@ function App(props) {
             </div>
             <div>
                 <h2>Sun</h2>
-                {/*<p>sunrise: {`hour: ${sunriseHours} minutes: ${sunriseMinutes}`}</p>*/}
-                {/*<p>sunset: {sunsetDate}</p>*/}
+                <p>sunrise: {`${sunriseHours}:${sunriseMinutes}:${sunriseSeconds}`}</p>
+                <p>sunset: {`${sunsetHours}:${sunsetMinutes}:${sunsetSeconds}`}</p>
             </div>
 
         </div>
