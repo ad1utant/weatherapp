@@ -76,6 +76,7 @@ function App(props) {
         <div className="App">
             <Form inputValue = {inputValue} setInputValue = {setInputValue} handleButtonClicked = {handleButtonClicked} />
             <h1>Current weather in: {cityName}</h1>
+<div id = 'container'>
             <div className={'temperatureBox'}>
                 <h2>Temperature</h2>
                 <p>max temperature: {temp_max}</p>
@@ -107,7 +108,8 @@ function App(props) {
             </div>
 
         </div>
-    )
+        </div>
+            )
 }
 
 export default App
