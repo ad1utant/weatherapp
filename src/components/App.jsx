@@ -84,29 +84,29 @@ function App(props) {
         <div id = 'container'>
             <div className={'temperatureBox'}>
                 <h2>Temperature</h2>
-                <p>max temperature: {temp_max}</p>
-                <p>temperature: {temp}</p>
-                <p>min temperature: {temp_min} </p>
-                <p>feels like: {feels_like}</p>
+                <p>max temperature: {temp_max + '°C'}</p>
+                <p>temperature: {temp + '°C'}</p>
+                <p>min temperature: {temp_min + '°C'} </p>
+                <p>feels like: {feels_like + '°C'}</p>
             </div>
 
 
             <div className={'windBox'}>
                 <h2>Wind</h2>
-                <p>speed: {speed}</p>
-                <p>deg: {deg}</p>
+                <p>speed: {speed + ' m/s'}</p>
+                <p>deg: {deg + '°'}</p>
             </div>
 
             <div className={'otherBox'}>
                 <h2>Other</h2>
-                <p>humidity: {humidity}</p>
-                <p>pressure: {pressure}</p>
+                <p>humidity: {humidity + '%'}</p>
+                <p>pressure: {pressure + ' hPa'}</p>
 
             </div>
 
             <div>
                 <h2>Clouds</h2>
-                <p>visibility: {visibility}</p>
+                <p>visibility: {visibility + 'm'}</p>
                 <p>clouds: {cloudsMain}</p>
                 <p>description: {description}</p>
 
@@ -115,6 +115,7 @@ function App(props) {
                 <h2>Sun</h2>
                 <p>sunrise: {`${sunriseHours}:${sunriseMinutes}:${sunriseSeconds}`}</p>
                 <p>sunset: {`${sunsetHours}:${sunsetMinutes}:${sunsetSeconds}`}</p>
+
             </div>
 
         </div>
