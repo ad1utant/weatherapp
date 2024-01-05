@@ -55,9 +55,10 @@ function App(props) {
         setCityName(inputValue)
     }
     useEffect(() => {
-        if(cityName !== 'current location') {
+        if(cityName !== 'current location' && cityName !== "") {
             fetches()
         }else{
+            setCityName('current location')
             getCurrentLocation()
         }
     },[cityName])
