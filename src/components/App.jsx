@@ -16,7 +16,7 @@ function App(props) {
                 lat = position.coords.latitude
                 lon = position.coords.longitude
 
-                fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${KEY}`)
+                fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${KEY}&units=metric`)
                     .then((response) => response.json())
                     .then((data) => {
                         setData(data)
@@ -36,7 +36,7 @@ function App(props) {
             .then(response => response.json())
             .then((cityData) => {
                 const {lat, lon} = cityData[0]
-                getWeatherLink = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${KEY}`
+                getWeatherLink = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${KEY}&units=metric`
                 return getWeatherLink
             })
             .then((link) => {
@@ -65,18 +65,19 @@ function App(props) {
 
     const { visibility, main, weather, wind, sys, name, coord } = data || {};
     const {deg, speed} = wind || {};
+    const {sunrise, sunset} = sys || {};
+    const sunriseDate = new Date(1000 * sunrise)
+    const sunriseHours = sunriseDate.getHours()
+    const sunriseMinutes = sunriseDate.getMinutes()
+    const sunsetDate = new Date(1000 * sunset)
     const {description, main: cloudsMain} = (weather && weather.length > 0) ? weather[0] : {};
     let { feels_like, humidity, pressure, temp, temp_max, temp_min } = main || {};
-    temp = Math.round(temp - 273)
-    temp_max = Math.round(temp_max - 273)
-    temp_min = Math.round(temp_min - 273)
-    feels_like = Math.round(feels_like - 273)
 
     return (
         <div className="App">
             <Form inputValue = {inputValue} setInputValue = {setInputValue} handleButtonClicked = {handleButtonClicked} />
             <h1>Current weather in: {cityName}</h1>
-<div id = 'container'>
+        <div id = 'container'>
             <div className={'temperatureBox'}>
                 <h2>Temperature</h2>
                 <p>max temperature: {temp_max}</p>
@@ -105,6 +106,11 @@ function App(props) {
                 <p>clouds: {cloudsMain}</p>
                 <p>description: {description}</p>
 
+            </div>
+            <div>
+                <h2>Sun</h2>
+                {/*<p>sunrise: {`hour: ${sunriseHours} minutes: ${sunriseMinutes}`}</p>*/}
+                {/*<p>sunset: {sunsetDate}</p>*/}
             </div>
 
         </div>
