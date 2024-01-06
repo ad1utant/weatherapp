@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import './App.css';
 import Form from "./Form.jsx";
-
+import Navbar from "./Navbar.jsx";
 function App(props) {
     const KEY = '4d6b0e426f410fb2f9af8ffa8ae8112c'
     let getWeatherLink, lat, lon;
@@ -85,6 +85,7 @@ function App(props) {
 
     return (
         <div className="App">
+            <Navbar/>
             <Form inputValue = {inputValue} setInputValue = {setInputValue} handleButtonClicked = {handleButtonClicked} />
             {cityName === 'city does not exist' ? <h1>city does not exist</h1> : <h1>Current weather in: {cityName}</h1>}
         <div id = 'container'>
