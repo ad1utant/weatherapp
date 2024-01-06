@@ -3,26 +3,19 @@ import Navbar from "./Navbar.jsx";
 import Current from "./Current.jsx";
 import Week from "./Week.jsx";
 import Today from "./Today.jsx";
-function App(props){
-    let component;
-    switch (window.location.pathname){
-        case '/':
-        case '/current':
-            component = <Current/>;
-            break;
-        case '/today':
-            component = <Today/>;
-            break;
-        case '/week':
-            component = <Week/>;
-            break;
-    }
+import {Route, Routes} from "react-router-dom";
 
+function App(props){
 
     return(
         <>
             <Navbar/>
-            {component}
+            <Routes>
+                <Route path={'/'} element={<Current/>} />
+                <Route path={'/current'} element={<Current/>}/>
+                <Route path={'/today'} element={<Today/>}/>
+                <Route path={'/week'} element={<Week/>}/>
+            </Routes>
         </>
     )
 }
