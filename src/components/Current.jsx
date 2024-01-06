@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import './App.css';
 import Form from "./Form.jsx";
-function CurrentWeather(props) {
+function Current(props) {
     const KEY = '4d6b0e426f410fb2f9af8ffa8ae8112c'
     let getWeatherLink, lat, lon;
     const [data,setData] = useState({})
@@ -128,4 +128,4 @@ function CurrentWeather(props) {
             )
 }
 
-export default CurrentWeather
+export default Current

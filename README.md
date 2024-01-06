@@ -1,4 +1,4 @@
-# Weather CurrentWeather
+# Weather Current
 
 A simple weather application built with React.
 
@@ -15,7 +15,7 @@ A simple weather application built with React.
 
 ## Introduction
 
-The Weather CurrentWeather is a React-based application that provides current weather information for a given location. It utilizes the OpenWeatherMap API to fetch real-time weather data and presents it in an easy-to-read format.
+The Weather Current is a React-based application that provides current weather information for a given location. It utilizes the OpenWeatherMap API to fetch real-time weather data and presents it in an easy-to-read format.
 
 ## Features
 

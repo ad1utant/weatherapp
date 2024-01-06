@@ -19,7 +19,7 @@ export const PaletteTree = () => (
   <Palette>
     <AntdPalette/> 
     <ReactIntlPalette/>
-    <Category name="CurrentWeather templates">
+    <Category name="Current templates">
       <Component name="Card">
         <Variant name="Loading">
           <Card title="Card title">
