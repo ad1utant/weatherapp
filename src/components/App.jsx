@@ -30,14 +30,19 @@ function App(props) {
         }
     }
 
-
     function fetches(){
         fetch(getCityCoordsLink)
             .then(response => response.json())
             .then((cityData) => {
-                const {lat, lon} = cityData[0]
-                getWeatherLink = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${KEY}&units=metric`
-                return getWeatherLink
+                try{
+                    const {lat, lon} = cityData[0];
+                    getWeatherLink = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${KEY}&units=metric`
+                    return getWeatherLink
+                }catch (error){
+                    setCityName('city does not exist')
+                    throw new Error('city does not exist')
+                }
+
             })
             .then((link) => {
                 return fetch(link)
@@ -48,7 +53,8 @@ function App(props) {
                 console.log(data)
             })
             .catch((error) => {
-            console.error(error)
+                console.error(error)
+
         })
     }
     const handleButtonClicked = (inputValue) => {
