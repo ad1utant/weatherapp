@@ -8,7 +8,7 @@ import '../styles/App.css'
 function App(props){
 
     return(
-        <>
+        <div className={'App'}>
             <Navbar/>
             <Routes>
                 <Route path={'/'} element={<Current/>} />
@@ -16,7 +16,7 @@ function App(props){
                 <Route path={'/today'} element={<Today/>}/>
                 <Route path={'/week'} element={<Week/>}/>
             </Routes>
-        </>
+        </div>
     )
 }
 export default App

@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from "react";
-import '../styles/App.css';
+import '../styles/current.css';
 import Form from "./Form.jsx";
 function Current(props) {
     const KEY = '4d6b0e426f410fb2f9af8ffa8ae8112c'
     let getWeatherLink, lat, lon;
     const [data,setData] = useState({})
     const [inputValue,setInputValue] = useState('')
-    const [cityName,setCityName] = useState('current location')
+    const [cityName,setCityName] = useState('your location')
     const getCityCoordsLink = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=${'1'}&appid=${KEY}`
 
     function getCurrentLocation() {
@@ -60,10 +60,10 @@ function Current(props) {
         setCityName(inputValue)
     }
     useEffect(() => {
-        if(cityName !== 'current location' && cityName !== "") {
+        if(cityName !== 'your location' && cityName !== "") {
             fetches()
         }else{
-            setCityName('current location')
+            setCityName('your location')
             getCurrentLocation()
         }
     },[cityName])
@@ -83,7 +83,7 @@ function Current(props) {
     let { feels_like, humidity, pressure, temp, temp_max, temp_min } = main || {};
 
     return (
-        <div className="App">
+        <div className="Current">
             <Form inputValue = {inputValue} setInputValue = {setInputValue} handleButtonClicked = {handleButtonClicked} />
             {cityName === 'city does not exist' ? <h1>city does not exist</h1> : <h1>Current weather in: {cityName}</h1>}
         <div id = 'container'>
