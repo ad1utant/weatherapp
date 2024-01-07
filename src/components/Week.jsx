@@ -1,8 +1,9 @@
+import '../styles/Week.css'
 function Week(props){
     return(
-        <>
-            week
-        </>
+        <div className={'soon'}>
+            Soon...
+        </div>
     )
 }
 export default Week

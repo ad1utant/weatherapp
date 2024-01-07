@@ -1,0 +1,8 @@
+.soon{
+    font-size: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 40%;
+    height: 30vh;
+}
