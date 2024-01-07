@@ -1,0 +1,46 @@
+
+.inputBox{
+    display: flex;
+    margin-top: 30px;
+    position: relative;
+    width: 250px;
+    align-items: center;
+}
+.inputBox input:invalid {
+    box-shadow: none;
+}
+
+
+.inputBox input{
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+    background: #1d2b3a;
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #ffffff;
+    font-size: 1em;
+}
+.inputBox span{
+    position: absolute;
+    left: 0;
+    padding: 10px;
+    pointer-events: none;
+    color: rgba(255,255,255,0.25);
+    text-transform: uppercase;
+    transition: 0.5s;
+}
+.inputBox input:valid ~ span,
+.inputBox input:focus ~ span{
+    color: #00dfc4;
+    transform: translateX(10px) translateY(-19px);
+    font-size: 0.65em;
+    padding: 0 10px;
+    background: #1d2b3a;
+    border-left: 1px solid #00dfc4;
+    border-right: 1px solid #00dfc4;
+    border-radius: 5px;
+}.inputBox input:valid,
+ .inputBox input:focus{
+    border: 1px solid #00dfc4;
+ }

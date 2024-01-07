@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-
+import '../styles/form.css'
 function Form(props) {
     const {handleButtonClicked, inputValue, setInputValue} = props
     const handleInputChange = (event) => {
@@ -14,13 +14,16 @@ function Form(props) {
 
 
     return(
-        <div>
-            <input placeholder={'type a city'} onKeyPress={handleKeyPress} onChange={handleInputChange}/>
-            <button onClick={() => handleButtonClicked(inputValue)}>
-                submit
-            </button>
+        <div className={'container'}>
+        <div className={'inputBox'}>
+            <input onKeyPress={handleKeyPress} onChange={handleInputChange} type={"text"} required={"required"}/>
+            <span>search for city</span>
+            {/*<button onClick={() => handleButtonClicked(inputValue)}>*/}
+            {/*    submit*/}
+            {/*</button>*/}
         </div>
-    )
+        </div>
+            )
 }
 export default Form
 

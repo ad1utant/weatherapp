@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import './App.css';
+import '../styles/App.css';
 import Form from "./Form.jsx";
 function Current(props) {
     const KEY = '4d6b0e426f410fb2f9af8ffa8ae8112c'
