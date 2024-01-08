@@ -1,4 +1,4 @@
-import react from "React";
+import React from "react";
 import Navbar from "./Navbar.jsx";
 import Current from "./Current.jsx";
 import Week from "./Week.jsx";
