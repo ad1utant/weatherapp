@@ -11,8 +11,13 @@ jobs:
       - name: 🚚 Get latest code
         uses: actions/checkout@v3
 
+      - name: 🔨 Build Project
+        run: |
+          npm install
+          npm run build
+
       - name: 📂 Sync files
-        uses: SamKirkland/FTP-Deploy-Action@v3.3.1
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{secrets.ftp_server}}
           username: ${{secrets.ftp_username}}
