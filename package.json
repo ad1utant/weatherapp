@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@react-buddy/ide-toolbox": "^2.4.0",
+    "firebase": "^10.7.1",
+    "firebase-tools": "^13.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.1"
